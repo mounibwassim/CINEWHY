@@ -79,7 +79,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
           initial={{ x: -20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           onClick={onBack}
-          className="absolute top-6 left-6 md:top-8 md:left-12 flex items-center gap-2 md:gap-3 text-white bg-black/50 hover:bg-black/70 backdrop-blur-md shadow-xl border border-white/10 md:border-transparent md:bg-transparent md:hover:bg-transparent md:backdrop-blur-none md:shadow-none px-4 py-2 md:px-0 md:py-0 transition-all z-[100] rounded-full"
+          className="fixed top-8 left-4 md:absolute md:top-8 md:left-12 flex items-center gap-2 md:gap-3 text-white bg-black/60 hover:bg-black/80 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.5)] border border-white/20 md:border-transparent md:bg-transparent md:hover:bg-transparent md:backdrop-blur-none md:shadow-none px-4 py-2 md:px-0 md:py-0 transition-all z-[999] rounded-full"
         >
           <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/10 md:bg-white/5 flex items-center justify-center">
             <ArrowLeft size={18} className="md:w-[20px] md:h-[20px]" />
@@ -94,7 +94,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
             ref={posterRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="movie-poster-3d w-full max-w-[280px] md:w-[320px] lg:w-[400px] aspect-[2/3] shrink-0 cursor-pointer overflow-hidden rounded-[2rem] transition-transform duration-200 ease-out shadow-[0_30px_60px_rgba(0,0,0,0.8)] md:shadow-[0_50px_100px_rgba(0,0,0,0.8)] border border-white/10 mx-auto lg:mx-0 flex items-center justify-center bg-black/40 mt-8 md:mt-0"
+            className="movie-poster-3d w-[55vw] max-w-[240px] sm:w-[50vw] sm:max-w-[280px] md:max-w-none md:w-[320px] lg:w-[400px] aspect-[2/3] shrink-0 cursor-pointer overflow-hidden rounded-[1.5rem] md:rounded-[2rem] transition-transform duration-200 ease-out shadow-[0_20px_50px_rgba(0,0,0,0.8)] md:shadow-[0_50px_100px_rgba(0,0,0,0.8)] border border-white/10 mx-auto lg:mx-0 flex items-center justify-center bg-black/40 mt-12 md:mt-0"
             style={{ transformStyle: "preserve-3d" }}
           >
              {!imgError ? (
