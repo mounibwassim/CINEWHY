@@ -97,7 +97,7 @@ const App: React.FC = () => {
     const fetchInit = async (attempt = 0) => {
       try {
         const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 15000); // 15s timeout
+        const timeout = setTimeout(() => controller.abort(), 60000); // 60s timeout for Render cold start
         const res = await fetch(`${API_BASE_URL}/api/init`, { signal: controller.signal });
         clearTimeout(timeout);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -108,7 +108,7 @@ const App: React.FC = () => {
         setInitError(null);
       } catch (err: any) {
         console.error('Error fetching init data:', err);
-        if (attempt < 3) {
+        if (attempt < 5) {
           setRetryCount(attempt + 1);
           setTimeout(() => fetchInit(attempt + 1), 2000);
         } else {
@@ -204,7 +204,7 @@ const App: React.FC = () => {
       <div className="w-16 h-16 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin" />
       <span className="font-poppins font-black text-blue-500 tracking-[0.5em] animate-pulse">BOOTING ENGINE...</span>
       {retryCount > 0 && (
-        <span className="text-slate-500 text-sm">Connecting to backend... attempt {retryCount}/3</span>
+        <span className="text-slate-500 text-sm">Waking up Render backend... attempt {retryCount}/5</span>
       )}
       <span className="text-slate-600 text-xs mt-2">{API_BASE_URL}</span>
     </div>
