@@ -79,9 +79,9 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
           initial={{ x: -20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           onClick={onBack}
-          className="absolute top-4 left-4 md:top-8 md:left-12 flex items-center gap-2 md:gap-3 text-slate-400 hover:text-white transition-colors z-50"
+          className="absolute top-6 left-6 md:top-8 md:left-12 flex items-center gap-2 md:gap-3 text-white bg-black/50 hover:bg-black/70 backdrop-blur-md shadow-xl border border-white/10 md:border-transparent md:bg-transparent md:hover:bg-transparent md:backdrop-blur-none md:shadow-none px-4 py-2 md:px-0 md:py-0 transition-all z-[100] rounded-full"
         >
-          <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 flex items-center justify-center">
+          <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/10 md:bg-white/5 flex items-center justify-center">
             <ArrowLeft size={18} className="md:w-[20px] md:h-[20px]" />
           </div>
           <span className="font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-[10px] md:text-xs">Return</span>
@@ -94,14 +94,14 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
             ref={posterRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="movie-poster-3d w-[260px] md:w-[320px] lg:w-[400px] shrink-0 cursor-pointer overflow-hidden rounded-[2rem] transition-transform duration-200 ease-out shadow-[0_30px_60px_rgba(0,0,0,0.8)] md:shadow-[0_50px_100px_rgba(0,0,0,0.8)] border border-white/10 mx-auto lg:mx-0"
+            className="movie-poster-3d w-full max-w-[280px] md:w-[320px] lg:w-[400px] aspect-[2/3] shrink-0 cursor-pointer overflow-hidden rounded-[2rem] transition-transform duration-200 ease-out shadow-[0_30px_60px_rgba(0,0,0,0.8)] md:shadow-[0_50px_100px_rgba(0,0,0,0.8)] border border-white/10 mx-auto lg:mx-0 flex items-center justify-center bg-black/40 mt-8 md:mt-0"
             style={{ transformStyle: "preserve-3d" }}
           >
              {!imgError ? (
                <img 
                  src={currentPoster} 
                  alt={movie.title} 
-                 className="w-full h-full object-cover"
+                 className="w-full h-full object-contain"
                  style={{ transform: "translateZ(50px)" }}
                  onError={() => setImgError(true)}
                />
@@ -109,7 +109,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
                <img 
                  src={fallbackPoster} 
                  alt={movie.title} 
-                 className="w-full h-full object-cover"
+                 className="w-full h-full object-contain"
                  style={{ transform: "translateZ(50px)" }}
                />
              )}
