@@ -8,6 +8,8 @@ const ResultsDashboard = lazy(() => import('./pages/ResultsDashboard'));
 const MovieDetails = lazy(() => import('./pages/MovieDetails'));
 const InfoPage = lazy(() => import('./pages/InfoPage'));
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 interface Movie {
   id: number;
   title: string;
@@ -90,7 +92,7 @@ const App: React.FC = () => {
   }, [recommendations]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/init')
+    fetch(`${API_BASE_URL}/api/init`)
       .then(res => res.json())
       .then((data: InitData) => {
         setInitData(data);
@@ -105,7 +107,7 @@ const App: React.FC = () => {
 
   const getRecommendations = () => {
     setLoading(true);
-    fetch('http://localhost:5000/api/recommend', {
+    fetch(`${API_BASE_URL}/api/recommend`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
