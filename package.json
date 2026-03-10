@@ -1,9 +1,10 @@
 {
-  "name": "movie_recommender",
+  "name": "cinewhy",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "python movie_recommender.py",
-    "serve": "python app.py"
+    "backend": "python app.py",
+    "frontend": "cd frontend && npm run dev",
+    "dev": "cd frontend && npm run dev"
   }
 }
