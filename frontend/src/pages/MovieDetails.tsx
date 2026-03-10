@@ -74,7 +74,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
       
       <div className="movie-details-container relative z-10 min-h-screen">
       
-      <div className="details-content w-full max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-20 md:p-20 relative">
+      <div className="details-content w-full max-w-7xl mx-auto px-4 sm:px-6 pt-14 pb-8 md:pt-20 md:pb-10 md:px-12 lg:px-20 relative">
         <motion.button 
           initial={{ x: -20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
@@ -87,7 +87,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
           <span className="font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-[10px] md:text-xs">Return</span>
         </motion.button>
 
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 text-center lg:text-left w-full mt-10 md:mt-0">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-12 text-center lg:text-left w-full mt-4 md:mt-10">
           <motion.div 
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -119,10 +119,10 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
             initial={{ x: 30, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.1 }}
-            className="space-y-6 md:space-y-8 flex-1 w-full text-center lg:text-left"
+            className="space-y-3 md:space-y-5 flex-1 w-full text-center lg:text-left"
           >
             <div className="space-y-2">
-              <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-poppins font-black text-white leading-tight uppercase tracking-tighter">
+              <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-poppins font-black text-white leading-tight uppercase tracking-tighter">
                 {movie.title}
               </h1>
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-6 mt-4 md:mt-0">
@@ -141,23 +141,23 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-2">
               <label className="text-[10px] font-black text-blue-400 uppercase tracking-[0.3em]">Synoptic Narrative</label>
-              <p className="text-xl md:text-2xl text-slate-300 leading-relaxed font-medium">
+              <p className="text-sm md:text-base text-slate-300 leading-relaxed font-medium line-clamp-3">
                 {movie.description || "Inference analysis complete. High-fidelity semantic alignment detected for this node in the cinematic web."}
               </p>
             </div>
 
             {explanation && (
-              <div className="space-y-3 md:space-y-4 p-6 md:p-8 bg-blue-600/10 border border-blue-500/20 rounded-[1.5rem] md:rounded-[2rem] backdrop-blur-md">
-                <label className="text-[10px] font-black text-blue-400 uppercase tracking-[0.2em] md:tracking-[0.3em]">Cinematic inference (Why Selected)</label>
-                <p className="text-blue-200 text-base md:text-lg italic font-medium">
+              <div className="space-y-2 p-4 bg-blue-600/10 border border-blue-500/20 rounded-2xl backdrop-blur-md">
+                <label className="text-[10px] font-black text-blue-400 uppercase tracking-[0.2em]">Why Selected</label>
+                <p className="text-blue-200 text-xs md:text-sm italic font-medium">
                   "{explanation}"
                 </p>
               </div>
             )}
             
-            <div className="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-3 md:gap-6 mt-6 md:mt-12 w-full pb-8 md:pb-0">
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-3 mt-4 md:mt-6 w-full pb-4">
               <a 
                 href={`https://www.netflix.com/search?q=${encodeURIComponent(movie.title)}`} 
                 target="_blank" 
