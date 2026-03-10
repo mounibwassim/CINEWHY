@@ -46,7 +46,7 @@ pip install flask flask-cors
 ```
 Start the backend discovery server:
 ```bash
-python webapp.py
+python app.py
 ```
 *The server will run locally on `http://localhost:5000`.*
 

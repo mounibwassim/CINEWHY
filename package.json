@@ -4,6 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "python movie_recommender.py",
-    "serve": "python webapp.py"
+    "serve": "python app.py"
   }
 }

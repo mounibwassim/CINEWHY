@@ -16,7 +16,7 @@ if (-not (Test-Path node_modules)) {
 Pop-Location
 
 Write-Host "[dashboard] Starting backend as background job..."
-Start-Job -ScriptBlock { param($r) & python "$r\webapp.py" } -ArgumentList $root | Out-Null
+Start-Job -ScriptBlock { param($r) & python "$r\app.py" } -ArgumentList $root | Out-Null
 Start-Sleep -Seconds 2
 
 Write-Host "[dashboard] Starting frontend (Vite) in current window..."

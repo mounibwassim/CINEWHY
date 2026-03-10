@@ -17,7 +17,7 @@ if not exist frontend\node_modules (
 )
 
 :: Start backend in new window so we can keep frontend logs here
-start "CineLogic Backend" cmd /k "cd /d %~dp0 && python webapp.py"
+start "CineLogic Backend" cmd /k "cd /d %~dp0 && python app.py"
 
 :: Run frontend in this window
 pushd frontend
