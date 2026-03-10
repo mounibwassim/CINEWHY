@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recommendations</title>
+    <style>body{font-family:Segoe UI,Arial,Helvetica,sans-serif;margin:20px}h1{margin-bottom:6px}.rec{border:1px solid #ddd;padding:10px;margin:8px 0}</style>
+  </head>
+  <body>
+    <h1>Top Recommendations</h1>
+    <p>Candidates: {{candidate_count}} · Active rules: {{rule_count}}</p>
+    {% if not top %}
+      <p>No results matched your filters.</p>
+    {% endif %}
+    {% for r in top %}
+      <div class="rec">
+        <h3>{{loop.index}}. {{r.movie.title}} ({{r.movie.year}})</h3>
+        <p>Rating: {{r.movie.rating}} · Votes: {{r.movie.votes}} · Runtime: {{r.movie.runtime}} min</p>
+        <p>Genres: {{r.movie.genres | join(', ')}}</p>
+        <p>Score: {{"%.2f" % r.score}}</p>
+        <ul>
+          {% for f in r.fired %}
+            <li>{{f.explanation}} (+{{"%.1f" % f.delta}})</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+    <p><a href="/">Back</a></p>
+  </body>
+</html>

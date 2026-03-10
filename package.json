@@ -1,0 +1,9 @@
+{
+  "name": "movie_recommender",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "python movie_recommender.py",
+    "serve": "python webapp.py"
+  }
+}

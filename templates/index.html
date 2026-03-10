@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CineLogic — Dashboard</title>
+    <style>body{font-family:Segoe UI,Arial,Helvetica,sans-serif;margin:20px}label{display:block;margin:6px 0}fieldset{margin-bottom:12px;padding:10px}</style>
+  </head>
+  <body>
+    <h1>CineLogic Dashboard</h1>
+    <form action="/recommend" method="post">
+      <fieldset>
+        <legend>Include genres</legend>
+        {% for g in genres %}
+          <label><input type="checkbox" name="inc_genres" value="{{g}}"> {{g}}</label>
+        {% endfor %}
+      </fieldset>
+
+      <fieldset>
+        <legend>Exclude genres</legend>
+        {% for g in genres %}
+          <label><input type="checkbox" name="exc_genres" value="{{g}}"> {{g}}</label>
+        {% endfor %}
+      </fieldset>
+
+      <fieldset>
+        <legend>Era & Quality</legend>
+        <label>Year from: <input type="number" name="year_from" value="{{year_min}}" min="1800" max="2100"></label>
+        <label>Year to: <input type="number" name="year_to" value="{{year_max}}" min="1800" max="2100"></label>
+        <label>Minimum rating: <input type="number" step="0.1" name="min_rating" value="0.0" min="0" max="10"></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Popularity & Runtime</legend>
+        <label>Popularity preference:
+          <select name="pop_pref">
+            <option value="any">any</option>
+            <option value="popular">popular</option>
+            <option value="obscure">obscure</option>
+          </select>
+        </label>
+        <label>Runtime preference:
+          <select name="runtime_pref">
+            <option value="any">any</option>
+            <option value="short">short</option>
+            <option value="medium">medium</option>
+            <option value="long">long</option>
+          </select>
+        </label>
+      </fieldset>
+
+      <label>Top K: <input type="number" name="top_k" value="10" min="1" max="50"></label>
+      <p><button type="submit">Get Recommendations</button></p>
+    </form>
+  </body>
+</html>
