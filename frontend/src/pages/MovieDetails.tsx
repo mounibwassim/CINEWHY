@@ -74,34 +74,34 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
       
       <div className="movie-details-container relative z-10 min-h-screen">
       
-      <div className="details-content w-full max-w-7xl mx-auto px-6 py-20 md:p-20">
+      <div className="details-content w-full max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-20 md:p-20 relative">
         <motion.button 
           initial={{ x: -20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           onClick={onBack}
-          className="fixed top-8 left-4 md:absolute md:top-8 md:left-12 flex items-center gap-2 md:gap-3 text-white bg-black/60 hover:bg-black/80 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.5)] border border-white/20 md:border-transparent md:bg-transparent md:hover:bg-transparent md:backdrop-blur-none md:shadow-none px-4 py-2 md:px-0 md:py-0 transition-all z-[999] rounded-full"
+          className="absolute top-0 left-4 md:top-8 md:left-12 flex items-center gap-2 md:gap-3 text-white bg-black/60 md:bg-white/5 hover:bg-black/80 md:hover:bg-white/10 backdrop-blur-md shadow-lg md:shadow-none border border-white/20 md:border-transparent px-4 py-2 md:px-0 md:py-0 transition-all z-[100] rounded-full"
         >
-          <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/10 md:bg-white/5 flex items-center justify-center">
+          <div className="w-8 h-8 md:w-12 md:h-12 rounded-full flex items-center justify-center">
             <ArrowLeft size={18} className="md:w-[20px] md:h-[20px]" />
           </div>
           <span className="font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-[10px] md:text-xs">Return</span>
         </motion.button>
 
-        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-16 text-left w-full mt-4 md:mt-0">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-16 text-left w-full mt-12 md:mt-0">
           <motion.div 
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             ref={posterRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="movie-poster-3d w-[55vw] max-w-[240px] sm:w-[50vw] sm:max-w-[280px] md:max-w-none md:w-[320px] lg:w-[400px] aspect-[2/3] shrink-0 cursor-pointer overflow-hidden rounded-[1.5rem] md:rounded-[2rem] transition-transform duration-200 ease-out shadow-[0_20px_50px_rgba(0,0,0,0.8)] md:shadow-[0_50px_100px_rgba(0,0,0,0.8)] border border-white/10 mx-auto lg:mx-0 flex items-center justify-center bg-black/40 mt-12 md:mt-0"
+            className="movie-poster-3d w-[200px] sm:w-[260px] md:w-[320px] lg:w-[400px] aspect-[2/3] shrink-0 cursor-pointer overflow-hidden rounded-[1.5rem] md:rounded-[2rem] transition-transform duration-200 ease-out shadow-[0_30px_60px_rgba(0,0,0,0.8)] md:shadow-[0_50px_100px_rgba(0,0,0,0.8)] border border-white/10 mx-auto lg:mx-0 flex items-center justify-center bg-transparent"
             style={{ transformStyle: "preserve-3d" }}
           >
              {!imgError ? (
                <img 
                  src={currentPoster} 
                  alt={movie.title} 
-                 className="w-full h-full object-contain"
+                 className="w-full h-full object-cover"
                  style={{ transform: "translateZ(50px)" }}
                  onError={() => setImgError(true)}
                />
@@ -109,7 +109,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
                <img 
                  src={fallbackPoster} 
                  alt={movie.title} 
-                 className="w-full h-full object-contain"
+                 className="w-full h-full object-cover"
                  style={{ transform: "translateZ(50px)" }}
                />
              )}
@@ -122,11 +122,11 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
             className="space-y-6 md:space-y-8 flex-1 w-full text-center lg:text-left"
           >
             <div className="space-y-2">
-              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-poppins font-black text-white leading-tight uppercase tracking-tighter">
+              <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-poppins font-black text-white leading-tight uppercase tracking-tighter">
                 {movie.title}
               </h1>
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-6 mt-4 md:mt-0">
-                <span className="text-blue-500 font-black text-2xl md:text-3xl opacity-80">{movie.year}</span>
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-6 mt-4 md:mt-0">
+                <span className="text-blue-500 font-black text-xl md:text-3xl opacity-80">{movie.year}</span>
                 <div className="px-4 py-1.5 bg-yellow-500/20 border border-yellow-500/30 rounded-xl">
                   <span className="text-yellow-400 font-black uppercase text-sm tracking-widest">Rating: {movie.rating || 0}</span>
                 </div>
@@ -157,7 +157,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
               </div>
             )}
             
-            <div className="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-4 md:gap-6 mt-8 md:mt-12 w-full">
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-3 md:gap-6 mt-6 md:mt-12 w-full pb-8 md:pb-0">
               <a 
                 href={`https://www.netflix.com/search?q=${encodeURIComponent(movie.title)}`} 
                 target="_blank" 
@@ -175,7 +175,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
                 href={`https://www.google.com/search?q=${encodeURIComponent(movie.title + " movie")}`} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="btn-google-cine flex items-center justify-center sm:justify-start gap-3 px-6 md:px-8 py-3 md:py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl font-black uppercase text-sm md:text-base tracking-[0.1em] md:tracking-widest transition-all hover:scale-105 active:scale-95 w-full sm:w-auto mt-4 sm:mt-0"
+                className="btn-google-cine flex items-center justify-center sm:justify-start gap-3 px-6 md:px-8 py-3 md:py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl font-black uppercase text-sm md:text-base tracking-[0.1em] md:tracking-widest transition-all hover:scale-105 active:scale-95 w-full sm:w-auto mt-2 sm:mt-0"
               >
                 <Search size={18} className="md:w-[20px] md:h-[20px]" />
                 Discover More
