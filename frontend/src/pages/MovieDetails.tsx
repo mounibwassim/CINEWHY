@@ -74,27 +74,27 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
       
       <div className="movie-details-container relative z-10 min-h-screen">
       
-      <div className="details-content">
+      <div className="details-content w-full max-w-7xl mx-auto px-6 py-20 md:p-20">
         <motion.button 
           initial={{ x: -20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           onClick={onBack}
-          className="absolute top-0 left-12 flex items-center gap-3 text-slate-400 hover:text-white transition-colors z-50"
+          className="absolute top-4 left-4 md:top-8 md:left-12 flex items-center gap-2 md:gap-3 text-slate-400 hover:text-white transition-colors z-50"
         >
-          <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
-            <ArrowLeft size={20} />
+          <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 flex items-center justify-center">
+            <ArrowLeft size={18} className="md:w-[20px] md:h-[20px]" />
           </div>
-          <span className="font-black uppercase tracking-[0.3em] text-xs">Return</span>
+          <span className="font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-[10px] md:text-xs">Return</span>
         </motion.button>
 
-        <div className="flex flex-col md:flex-row items-center gap-16 text-left">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-16 text-left w-full mt-4 md:mt-0">
           <motion.div 
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             ref={posterRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="movie-poster-3d shrink-0 cursor-pointer overflow-hidden rounded-[2rem] transition-transform duration-200 ease-out shadow-[0_50px_100px_rgba(0,0,0,0.8)] border border-white/10"
+            className="movie-poster-3d w-[260px] md:w-[320px] lg:w-[400px] shrink-0 cursor-pointer overflow-hidden rounded-[2rem] transition-transform duration-200 ease-out shadow-[0_30px_60px_rgba(0,0,0,0.8)] md:shadow-[0_50px_100px_rgba(0,0,0,0.8)] border border-white/10 mx-auto lg:mx-0"
             style={{ transformStyle: "preserve-3d" }}
           >
              {!imgError ? (
@@ -119,14 +119,14 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
             initial={{ x: 30, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.1 }}
-            className="space-y-8 flex-1"
+            className="space-y-6 md:space-y-8 flex-1 w-full text-center lg:text-left"
           >
             <div className="space-y-2">
-              <h1 className="text-6xl md:text-8xl font-poppins font-black text-white leading-tight uppercase tracking-tighter">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-poppins font-black text-white leading-tight uppercase tracking-tighter">
                 {movie.title}
               </h1>
-              <div className="flex flex-wrap items-center gap-6">
-                <span className="text-blue-500 font-black text-3xl opacity-80">{movie.year}</span>
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-6 mt-4 md:mt-0">
+                <span className="text-blue-500 font-black text-2xl md:text-3xl opacity-80">{movie.year}</span>
                 <div className="px-4 py-1.5 bg-yellow-500/20 border border-yellow-500/30 rounded-xl">
                   <span className="text-yellow-400 font-black uppercase text-sm tracking-widest">Rating: {movie.rating || 0}</span>
                 </div>
@@ -149,20 +149,20 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
             </div>
 
             {explanation && (
-              <div className="space-y-4 p-8 bg-blue-600/10 border border-blue-500/20 rounded-[2rem] backdrop-blur-md">
-                <label className="text-[10px] font-black text-blue-400 uppercase tracking-[0.3em]">Cinematic inference (Why Selected)</label>
-                <p className="text-blue-200 text-lg italic font-medium">
+              <div className="space-y-3 md:space-y-4 p-6 md:p-8 bg-blue-600/10 border border-blue-500/20 rounded-[1.5rem] md:rounded-[2rem] backdrop-blur-md">
+                <label className="text-[10px] font-black text-blue-400 uppercase tracking-[0.2em] md:tracking-[0.3em]">Cinematic inference (Why Selected)</label>
+                <p className="text-blue-200 text-base md:text-lg italic font-medium">
                   "{explanation}"
                 </p>
               </div>
             )}
             
-            <div className="flex flex-wrap gap-6 mt-12">
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-4 md:gap-6 mt-8 md:mt-12 w-full">
               <a 
                 href={`https://www.netflix.com/search?q=${encodeURIComponent(movie.title)}`} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="btn-netflix-cine flex items-center gap-3 px-8 py-4 bg-[#e50914] hover:bg-[#ff0f1a] text-white rounded-2xl font-black uppercase tracking-widest transition-all shadow-[0_10px_30px_rgba(229,9,20,0.4)] hover:scale-105 active:scale-95"
+                className="btn-netflix-cine flex items-center justify-center sm:justify-start gap-3 px-6 md:px-8 py-3 md:py-4 bg-[#e50914] hover:bg-[#ff0f1a] text-white rounded-2xl font-black uppercase text-sm md:text-base tracking-[0.1em] md:tracking-widest transition-all shadow-[0_10px_30px_rgba(229,9,20,0.4)] hover:scale-105 active:scale-95 w-full sm:w-auto"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M19 1.5c-1.104 0-2 .896-2 2v10.5h-2v-12.5c0-1.104-.896-2-2-2h-2c-1.104 0-2 .896-2 2v12.5h-2v-10.5c0-1.104-.896-2-2-2h-2c-1.104 0-2 .896-2 2v19h4v-11h2v11h4v-11h2v11h4v-19c0-1.104-.896-2-2-2h-2z" style={{display: 'none'}} />
@@ -175,9 +175,9 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
                 href={`https://www.google.com/search?q=${encodeURIComponent(movie.title + " movie")}`} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="btn-google-cine flex items-center gap-3 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+                className="btn-google-cine flex items-center justify-center sm:justify-start gap-3 px-6 md:px-8 py-3 md:py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl font-black uppercase text-sm md:text-base tracking-[0.1em] md:tracking-widest transition-all hover:scale-105 active:scale-95 w-full sm:w-auto mt-4 sm:mt-0"
               >
-                <Search size={20} />
+                <Search size={18} className="md:w-[20px] md:h-[20px]" />
                 Discover More
               </a>
             </div>

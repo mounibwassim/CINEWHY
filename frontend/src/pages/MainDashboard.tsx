@@ -47,14 +47,14 @@ const MainDashboard: React.FC<MainDashboardProps> = (props) => {
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="p-8 max-w-6xl mx-auto space-y-12 relative z-10"
+        className="p-4 md:p-8 max-w-6xl mx-auto space-y-8 md:space-y-12 relative z-10"
       >
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          <section className="glass-card space-y-8 relative overflow-hidden group border-white/5 bg-white/[0.01]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10">
+          <section className="glass-card space-y-6 md:space-y-8 relative overflow-hidden group border-white/5 bg-white/[0.01]">
             <div className="flex items-center gap-3 border-b border-white/5 pb-4">
-              <Filter className="text-blue-400" size={24} />
-              <h3 className="font-poppins font-black text-2xl tracking-tighter uppercase">Genre Architecture</h3>
+              <Filter className="text-blue-400 w-5 h-5 md:w-6 md:h-6" />
+              <h3 className="font-poppins font-black text-xl md:text-2xl tracking-tighter uppercase">Genre Architecture</h3>
             </div>
             <div className="space-y-10">
               <div>
@@ -100,10 +100,10 @@ const MainDashboard: React.FC<MainDashboardProps> = (props) => {
           </div>
         </div>
 
-        <div className="flex justify-center pt-8">
-          <motion.button onClick={getRecommendations} disabled={loading} className="btn-premium text-2xl font-black px-24 py-8 relative overflow-hidden group shadow-2xl tracking-widest uppercase">
+        <div className="flex justify-center pt-4 md:pt-8 w-full">
+          <motion.button onClick={getRecommendations} disabled={loading} className="btn-premium text-lg md:text-2xl font-black px-8 md:px-24 py-4 md:py-8 relative overflow-hidden group shadow-2xl tracking-[0.1em] md:tracking-widest uppercase w-full sm:w-auto">
             <div className="absolute inset-0 bg-blue-600 group-hover:bg-blue-500 transition-all" />
-            <span className="relative z-10">{loading ? 'Calibrating...' : 'Initialize Discovery'}</span>
+            <span className="relative z-10 text-center w-full">{loading ? 'Calibrating...' : 'Initialize Discovery'}</span>
           </motion.button>
         </div>
       </motion.div>

@@ -250,6 +250,24 @@ footer button {
   object-fit: contain;
 }
 
+/* Responsive Grid Systems */
+.results-movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .results-movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .movie-card img {
+    height: 220px !important;
+  }
+}
+
 .main-title {
   font-size: 28px;
   font-weight: 800;

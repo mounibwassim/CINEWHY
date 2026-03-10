@@ -131,18 +131,18 @@ const WelcomeDashboard: React.FC<{ onStart: () => void }> = ({ onStart }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-12"
+            className="text-lg md:text-2xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8 md:mb-12 px-4"
           >
             Elevate your cinematic journey with our pure rule-based engine. 
             Experience logic through a premium 3D lens.
           </motion.p>
 
-          <div className="flex flex-col gap-12 items-center">
+          <div className="flex flex-col gap-6 md:gap-12 items-center w-full px-4">
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={onStart}
-              className="btn-premium text-2xl px-12 py-6 flex items-center gap-4 group"
+              className="btn-premium text-lg md:text-2xl px-8 md:px-12 py-4 md:py-6 flex items-center gap-4 group w-full md:w-auto"
             >
               Start Discovery
               <Play size={20} className="fill-current group-hover:translate-x-1 transition-transform" />

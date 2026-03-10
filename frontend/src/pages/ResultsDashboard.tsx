@@ -309,8 +309,8 @@ const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ recommendations, on
       </div>
 
       {/* ── Premium 3D Stat Cards ── */}
-      <section className="mb-14">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <section className="mb-10 md:mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6">
           {statCards.map((card, i) => (
             <StatCard key={i} {...card} />
           ))}
@@ -340,12 +340,12 @@ const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ recommendations, on
       </section>
 
       {/* ── Why CineWhy ── */}
-      <section className="why-cinewhy text-center max-w-4xl mx-auto flex flex-col items-center">
-        <h2 className="text-3xl font-poppins font-black text-white mb-6 drop-shadow-md">Why Use CineWhy</h2>
-        <p className="text-slate-300 text-lg mb-8 leading-relaxed">
+      <section className="why-cinewhy text-center max-w-4xl mx-auto flex flex-col items-center px-4">
+        <h2 className="text-2xl md:text-3xl font-poppins font-black text-white mb-4 md:mb-6 drop-shadow-md">Why Use CineWhy</h2>
+        <p className="text-slate-300 text-base md:text-lg mb-6 md:mb-8 leading-relaxed">
           CineWhy predicts movies with 95% semantic accuracy using an advanced discovery engine.
         </p>
-        <div className="flex flex-col md:flex-row justify-center gap-6 md:gap-12 text-left bg-[#161930]/40 p-8 rounded-2xl border border-white/5 w-full">
+        <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-12 text-left bg-[#161930]/40 p-6 md:p-8 rounded-2xl border border-white/5 w-full">
           {['Over 2,000+ movies analyzed', 'Smart semantic inference scoring', 'AI-powered recommendation intelligence'].map((txt, i) => (
             <div key={i} className="flex items-center gap-4">
               <div className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_10px_#3b82f6]" />
