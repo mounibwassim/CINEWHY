@@ -62,6 +62,8 @@ const App: React.FC = () => {
   
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [initError, setInitError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
 
   // Wrapper component to get movie from location.state or from initData via ID
   const MovieDetailsWrapper: React.FC = () => {
@@ -92,17 +94,29 @@ const App: React.FC = () => {
   }, [recommendations]);
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/init`)
-      .then(res => res.json())
-      .then((data: InitData) => {
+    const fetchInit = async (attempt = 0) => {
+      try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 15000); // 15s timeout
+        const res = await fetch(`${API_BASE_URL}/api/init`, { signal: controller.signal });
+        clearTimeout(timeout);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data: InitData = await res.json();
         setInitData(data);
         setYearFrom(data.year_min);
         setYearTo(data.year_max);
-      })
-      .catch(err => console.error('Error fetching init data:', err));
-
-    // Removed Global Mouse Light
-
+        setInitError(null);
+      } catch (err: any) {
+        console.error('Error fetching init data:', err);
+        if (attempt < 3) {
+          setRetryCount(attempt + 1);
+          setTimeout(() => fetchInit(attempt + 1), 2000);
+        } else {
+          setInitError(`Could not connect to backend at ${API_BASE_URL}. Check that the server is running and CORS is enabled.`);
+        }
+      }
+    };
+    fetchInit();
   }, []);
 
   const getRecommendations = () => {
@@ -171,10 +185,28 @@ const App: React.FC = () => {
     });
   };
 
+  if (initError) return (
+    <div className="h-screen bg-[#0a0f2f] flex flex-col items-center justify-center gap-8 p-8 text-center">
+      <div className="text-6xl">🎬</div>
+      <h2 className="font-poppins font-black text-white text-2xl uppercase tracking-widest">Backend Offline</h2>
+      <p className="text-slate-400 max-w-md">{initError}</p>
+      <button
+        onClick={() => { setInitError(null); setRetryCount(0); }}
+        className="px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-black uppercase tracking-widest transition-all"
+      >
+        Retry Connection
+      </button>
+    </div>
+  );
+
   if (!initData) return (
     <div className="h-screen bg-[#0a0f2f] flex flex-col items-center justify-center gap-8">
       <div className="w-16 h-16 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin" />
       <span className="font-poppins font-black text-blue-500 tracking-[0.5em] animate-pulse">BOOTING ENGINE...</span>
+      {retryCount > 0 && (
+        <span className="text-slate-500 text-sm">Connecting to backend... attempt {retryCount}/3</span>
+      )}
+      <span className="text-slate-600 text-xs mt-2">{API_BASE_URL}</span>
     </div>
   );
 
