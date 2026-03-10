@@ -262,10 +262,6 @@ footer button {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
-  
-  .movie-card img {
-    height: 220px !important;
-  }
 }
 
 .main-title {

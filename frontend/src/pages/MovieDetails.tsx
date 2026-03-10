@@ -87,21 +87,21 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
           <span className="font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-[10px] md:text-xs">Return</span>
         </motion.button>
 
-        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-16 text-left w-full mt-12 md:mt-0">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 text-center lg:text-left w-full mt-10 md:mt-0">
           <motion.div 
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             ref={posterRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="movie-poster-3d w-[200px] sm:w-[260px] md:w-[320px] lg:w-[400px] aspect-[2/3] shrink-0 cursor-pointer overflow-hidden rounded-[1.5rem] md:rounded-[2rem] transition-transform duration-200 ease-out shadow-[0_30px_60px_rgba(0,0,0,0.8)] md:shadow-[0_50px_100px_rgba(0,0,0,0.8)] border border-white/10 mx-auto lg:mx-0 flex items-center justify-center bg-transparent"
+            className="movie-poster-3d w-[180px] sm:w-[220px] md:w-[280px] lg:w-[340px] xl:w-[380px] aspect-[2/3] shrink-0 cursor-pointer overflow-hidden rounded-[1.5rem] md:rounded-[2rem] transition-transform duration-200 ease-out shadow-[0_20px_40px_rgba(0,0,0,0.6)] md:shadow-[0_40px_80px_rgba(0,0,0,0.8)] border border-white/10 mx-auto lg:mx-0 flex items-center justify-center bg-transparent"
             style={{ transformStyle: "preserve-3d" }}
           >
              {!imgError ? (
                <img 
                  src={currentPoster} 
                  alt={movie.title} 
-                 className="w-full h-full object-cover"
+                 className="w-full h-full object-contain"
                  style={{ transform: "translateZ(50px)" }}
                  onError={() => setImgError(true)}
                />
@@ -109,7 +109,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie: movieData, movies, o
                <img 
                  src={fallbackPoster} 
                  alt={movie.title} 
-                 className="w-full h-full object-cover"
+                 className="w-full h-full object-contain"
                  style={{ transform: "translateZ(50px)" }}
                />
              )}

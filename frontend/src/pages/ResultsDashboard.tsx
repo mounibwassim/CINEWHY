@@ -71,7 +71,8 @@ const InteractiveMovieCard = ({ movieRec, onClick }: InteractiveMovieCardProps) 
       style={{ 
         background: cardGradient,
         transition: 'transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)', 
-        transformStyle: 'preserve-3d',
+        transform: 'translateZ(0)',
+        willChange: 'transform',
         boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
       }}
       onClick={() => onClick(movieRec, posterUrl)}
@@ -84,14 +85,14 @@ const InteractiveMovieCard = ({ movieRec, onClick }: InteractiveMovieCardProps) 
         <img
           src={posterUrl}
           alt={movie.title}
-          className="w-full h-[320px] object-cover rounded-xl shadow-[0_8px_16px_rgba(0,0,0,0.6)]"
+          className="w-full aspect-[2/3] object-cover rounded-xl shadow-[0_8px_16px_rgba(0,0,0,0.6)]"
           loading="lazy"
           onError={(e) => {
             e.currentTarget.src = fallbackPoster;
           }}
         />
         {/* Rating badge */}
-        <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-1.5 shadow-lg">
+        <div className="absolute top-4 right-4 bg-black/80 px-3 py-1 rounded-full border border-white/10 flex items-center gap-1.5 shadow-lg">
           <Star size={12} className="text-yellow-400 fill-yellow-400" />
           <span className="text-white text-xs font-bold">{movie.rating || 'N/A'}</span>
         </div>
@@ -112,7 +113,7 @@ const InteractiveMovieCard = ({ movieRec, onClick }: InteractiveMovieCardProps) 
         </div>
       </div>
 
-      <div className="card-overlay flex flex-col justify-center items-center bg-black/80 backdrop-blur-sm z-20">
+      <div className="card-overlay flex flex-col justify-center items-center bg-black/80 z-20">
         <PlayCircle size={48} className="text-pink-500 mb-3 drop-shadow-[0_0_15px_rgba(236,72,153,0.8)]" />
         <div className="view-details-btn text-white font-black text-xl tracking-widest uppercase flex items-center gap-2">
           View Details
