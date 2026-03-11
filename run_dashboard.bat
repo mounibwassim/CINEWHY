@@ -19,6 +19,9 @@ if not exist frontend\node_modules (
 :: Start backend in new window so we can keep frontend logs here
 start "CineLogic Backend" cmd /k "cd /d %~dp0 && python app.py"
 
+:: Wait for backend health endpoint to become available (improves UX when backend cold-starts)
+powershell -NoProfile -Command " $health='http://localhost:5000/api/init'; $max=15; for ($i=1;$i -le $max;$i++) { try { $r=Invoke-WebRequest -Uri $health -UseBasicParsing -TimeoutSec 5 -ErrorAction Stop; Write-Host '[dashboard] Backend is up.'; exit 0 } catch { Start-Sleep -Seconds 2; Write-Host '[dashboard] Backend not ready, attempt $i/$max...' } }; Write-Host '[dashboard] Warning: Backend did not respond after multiple attempts.'; exit 1 "
+
 :: Run frontend in this window
 pushd frontend
 npm run dev
