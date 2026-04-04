@@ -86,7 +86,7 @@ const Layout: React.FC<LayoutProps> = ({ children, activeTab, setActiveTab }) =>
           {/* Top Branding Bar injected for Phase 25 */}
           <div className="w-full flex justify-center items-center py-6 md:py-10 mb-2 md:mb-4">
             <div className="flex items-center gap-3 md:gap-6">
-              <img src={logo} className="w-[60px] h-[60px] md:w-[100px] md:h-[100px] object-contain drop-shadow-[0_0_20px_rgba(0,210,255,0.4)]" alt="CineWhy"/>
+              <img src={logo} className="h-[48px] object-contain drop-shadow-[0_0_20px_rgba(0,210,255,0.4)]" alt="CineWhy"/>
               <h2 className="text-4xl md:text-7xl font-black text-white leading-none tracking-tighter drop-shadow-[0_4px_15px_rgba(0,0,0,0.8)]">
                 CINE<span className="text-[#1e90ff] drop-shadow-[0_0_20px_rgba(30,144,255,0.6)]">WHY</span>
               </h2>
